@@ -1,11 +1,16 @@
 package jm.task.core.jdbc;
 
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        UserDao userDao = new UserDao();
+
+       UserDaoHibernateImpl userDao = new UserDaoHibernateImpl();
+        userDao.dropUsersTable();
+
+        /*UserDao userDao = new UserDao();
         userDao.createUsersTable();
         for (int i = 1; i<=4; i++) {
             userDao.saveUser("Имя " + i, " Фамилия" + i, (byte) i);
@@ -16,6 +21,6 @@ public class Main {
             System.out.println(user);
         }
         userDao.cleanUsersTable();
-        userDao.dropUsersTable();
+        userDao.dropUsersTable();*/
     }
 }
