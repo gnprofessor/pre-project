@@ -115,7 +115,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
         try {
             transaction = session.beginTransaction();
-            session.createSQLQuery("TRUNCATE TABLE IF EXISTS users").addEntity(User.class);
+            session.createSQLQuery("TRUNCATE TABLE IF EXISTS users").addEntity(User.class).executeUpdate();
             transaction.commit();
         } catch (Exception e) {
             if ( transaction != null ) {
