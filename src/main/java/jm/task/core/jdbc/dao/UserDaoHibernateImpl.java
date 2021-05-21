@@ -2,12 +2,8 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -87,7 +83,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try {
             transaction = session.beginTransaction();
 
-            User user = (User) session.get(User.class, id);
+            User user = session.get(User.class, id);
             session.delete(user);
 
             transaction.commit();
@@ -105,7 +101,7 @@ public class UserDaoHibernateImpl implements UserDao {
     @SuppressWarnings ("unchecked")
     public List<User> getAllUsers() {
 
-        return (List<User>) Util.getSessionFactory().openSession().createQuery("From User").list();
+        return (List<User>) Util.getSessionFactory().openSession().createQuery("from User").list();
     }
 
     @Override
@@ -115,7 +111,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
         try {
             transaction = session.beginTransaction();
-            session.createSQLQuery("TRUNCATE TABLE IF EXISTS users").addEntity(User.class).executeUpdate();
+            session.createSQLQuery("TRUNCATE TABLE users").addEntity(User.class).executeUpdate();
             transaction.commit();
         } catch (Exception e) {
             if ( transaction != null ) {

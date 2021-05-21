@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Util {
-    private static String url = "jdbc:mysql://localhost/preproject?serverTimezone=Europe/Moscow&useSSL=false";
+    private static String url = "jdbc:mysql://localhost:3306/preproject?serverTimezone=Europe/Moscow&useSSL=false";
     private static String username = "root";
     private static String password = "root";
     private static String driver = "com.mysql.cj.jdbc.Driver";
