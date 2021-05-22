@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        UserDao userDao = new UserDao();
+        UserService userDao = new UserService();
         userDao.createUsersTable();
         for (int i = 1; i<=4; i++) {
             userDao.saveUser("Имя " + i, " Фамилия" + i, (byte) i);

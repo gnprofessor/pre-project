@@ -5,16 +5,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
-    private String url = "jdbc:mysql://localhost/preproject?serverTimezone=Europe/Moscow&useSSL=false";
-    private String username = "root";
-    private String password = "root";
-    private String driver = "com.mysql.cj.jdbc.Driver";
+    private static final String url = "jdbc:mysql://localhost:3306/preproject?serverTimezone=Europe/Moscow&useSSL=false";
+    private static final String username = "root";
+    private static final String password = "root";
+    private static final String driver = "com.mysql.cj.jdbc.Driver";
     private Connection conn;
     private static Util instance;
 
     private Util() {
         try {
-            Class.forName(driver).getDeclaredConstructor().newInstance();
+            Class.forName(driver);
             this.conn = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
             System.out.println("Connection failed");
